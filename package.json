@@ -4,7 +4,8 @@
   "description": "choose your own adventure game",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec/*spec.js"
+    "test": "mocha spec/*spec.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
