@@ -4,7 +4,7 @@ exports.escapePod = {
   choices: [
     "Leave Room",
     "Send Distress Signal",
-    "Search supplies",
+    "Search Supplies",
     "Look Out of Porthole"
   ],
   results: {
@@ -14,7 +14,7 @@ exports.escapePod = {
       "You fire up the torch and burn through the fused locking mechanism (using up the torch's limited fuel supply). The hatch swings open with a crash. (-1 Cutting Torch)",
     "Send Distress Signal":
       "You activate the emergency subspace radio, but hear nothing but static. The equipment must have been damaged in the crash (or is being jammed...)",
-    "Search supplies":
+    "Search Supplies":
       "The survival supplies are limited, but you do find a Medical Kit and a Cutting Torch (+1 Medkit, +1 Cutting Torch)",
     "Look Out of Porthole":
       "The porthole in the roof is diffult to access, but by standing on a crash couch you are able to get a look out of it. You see (LANDSCAPE TBD)"
