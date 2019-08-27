@@ -1,33 +1,29 @@
+const { escapePod, hanger1, shuttle } = require("./index");
+
 exports.Template = {
-  description:
-    "Text",
+  description: "Text",
   options: {
-    "Option 1":
-      "Text",
-    "Option 2":
-      "Text",
-    "Option 3":
-      "Text"
+    "Option 1": "Text",
+    "Option 2": "Text",
+    "Option 3": "Text"
   },
   doors: {
     "Door 1": {
       status: "closed",
       key: "Key",
-      closed:
-        "Text",
-      open:
-        "Text",
+      closed: "Text",
+      open: "Text",
       opened: "Text"
     }
   }
 };
 
-exports.escapePod = {
+exports.escapePodTemplate = {
   description:
     "Your escape pod contains crash couches and life support for five people, but you are the only occupant. There is a sealed escape hatch at one end of the pod, and a communications console at the other end. Survival equipment is secured to the walls, and a small porthole is built into the roof.",
   options: {
-    "Send Distress Signal":
-      "You activate the emergency subspace radio, but hear nothing but static. The equipment must have been damaged in the crash (or is being jammed...)",
+    "Send Standard Greeting":
+      "You activate the emergency subspace radio, but hear nothing but static. The equipment must have been damaged in the landing (or is being jammed...)",
     "Search Supplies":
       "The survival supplies are limited, but you do find a Medical Kit and a Cutting Torch (+1 Medkit, +1 Cutting Torch)",
     "Look Out of Porthole":
@@ -36,7 +32,7 @@ exports.escapePod = {
   doors: {
     "Open Hatch": {
       status: "closed",
-      key: "Cutting Torch",
+      key: "cuttingTorch",
       closed:
         "You try the escape hatch, which should open freely, only to find that it is jammed. On closer inspection, you see that the mechanism has fused from extreme heat, and will need to be cut open",
       open:
@@ -46,7 +42,7 @@ exports.escapePod = {
   }
 };
 
-exports.Hanger 1 = {
+exports.hanger1Template = {
   description:
     "Your escape pod is held in a hanger bay, which also contains some kind of small shuttlecraft. A set of closed spacedoors take up one long wall. There are two bulkhead doors leading out of the Hanger, each labelled with unfamiliar alien writing. Four lockers sit against the far wall.",
   options: {
@@ -66,16 +62,15 @@ exports.Hanger 1 = {
       open:
         "The hatch swings open easily, now that the corridor beyond is pressurised. You move into the corridor beyond.",
       opened: "You move into the Central Corridor"
-    }
-      "Cargo Bay 1 Door": {
-      status: "open",
+    },
+    "Cargo Bay 1 Door": {
+      status: "opened",
       key: "none",
-      closed:
-        "none",
+      closed: "none",
       open:
         "After a moment's effort, the hatch creaks open and you pass through it.",
       opened: "You move into Cargo Bay 1"
-    }
+    },
     "Shuttle Door": {
       status: "closed",
       key: "ID Card 1",
@@ -84,11 +79,15 @@ exports.Hanger 1 = {
       open:
         "You insert the ID card into the slot, and the door slides smootly open. You climb aboard the shuttle.",
       opened: "You climb aboard the shuttle"
+    },
+    "Escape Pod": {
+      status: "opened",
+      opened: "You climb in the escape pod"
     }
   }
 };
 
-exports.Shuttle = {
+exports.shuttleTemplate = {
   description:
     "The inside of the shuttle is mostly taken up by storage lockers and seating. ",
   options: {
@@ -96,17 +95,11 @@ exports.Shuttle = {
       "The shuttle's main drive is not powered up, and it is too alien in design for you to bring it online yourself. You think that you could fly this ship if it had power, however.",
     "Search Lockers":
       "You find a small plastic box labelled with alien script. You open the box, and see that it contains a metal disc. You take the disc out of the box, and while holding it, the text seems suddenly clear and understandable to you. Looking at the box, you see that it is labelled 'Universal Translator'. This will come in very handy, you think. (+1 Universal Translator).",
-    "Option 3":
-      "Text"
+    "Option 3": "Text"
   },
   doors: {
     "Door 1": {
       status: "open",
-      key: "none",
-      closed:
-        "none",
-      open:
-        "none",
       opened: "You climb out of the shuttle"
     }
   }

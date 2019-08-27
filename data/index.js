@@ -1,1 +1,2 @@
-exports.rooms = require("./rooms");
+exports.roomTemplates = require("./rooms");
+exports.boxText = require("./boxText");
