@@ -1,4 +1,4 @@
-const { escapePod, hanger1, shuttle } = require("../index.js");
+const { escapePod, hanger1, shuttle } = require("../seed");
 
 module.exports = {
   escapePod: {
