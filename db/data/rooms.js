@@ -83,6 +83,7 @@ exports.hanger1Template = {
       opened: "You move into the Central Corridor"
     },
     "Cargo Bay 1 Door": {
+      location: "cargoBay1",
       status: "closed",
       open:
         "After a moment's effort, the hatch creaks open and you pass through it.",
@@ -95,10 +96,11 @@ exports.hanger1Template = {
       closed:
         "The shuttle door appears locked. There is a console next to it, with a slot for a card of some kind.",
       open:
-        "You insert the ID card into the slot, and the door slides smootly open. You climb aboard the shuttle.",
+        "You insert the ID card into the slot, and the door slides smoothly open. You climb aboard the shuttle.",
       opened: "You climb aboard the shuttle"
     },
     "Escape Pod": {
+      location: "escapePod",
       status: "opened",
       opened: "You climb in the escape pod"
     }
@@ -117,15 +119,12 @@ exports.shuttleTemplate = {
     "Search Lockers": {
       description:
         "You find a small plastic box labelled with alien script. You open the box, and see that it contains a metal disc. You take the disc out of the box, and while holding it, the text seems suddenly clear and understandable to you. Looking at the box, you see that it is labelled 'Universal Translator'. This will come in very handy, you think. (+1 Universal Translator)."
-    },
-    "Option 3": {
-      description: "Text"
     }
   },
   doors: {
     "Door 1": {
       location: "hanger1",
-      status: "open",
+      status: "opened",
       opened: "You climb out of the shuttle"
     }
   }

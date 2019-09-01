@@ -40,8 +40,9 @@ class Room {
         }
         this.interactRoom();
       } else {
+        const status = require("../../index");
         console.log(status);
-        this.interactRoomt();
+        this.interactRoom();
       }
     });
   }
@@ -49,7 +50,7 @@ class Room {
   openDoor(choice) {
     const status = require("../../index");
     const Rooms = require("../seed");
-    let nextRoom = Rooms[this.doors["Open Hatch"].location];
+    let nextRoom = Rooms[this.doors[choice].location];
     if (
       this.doors[choice].status === "closed" &&
       status.keys.hasOwnProperty(this.doors[choice].key)
