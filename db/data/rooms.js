@@ -118,7 +118,8 @@ exports.shuttleTemplate = {
     },
     "Search Lockers": {
       description:
-        "You find a small plastic box labelled with alien script. You open the box, and see that it contains a metal disc. You take the disc out of the box, and while holding it, the text seems suddenly clear and understandable to you. Looking at the box, you see that it is labelled 'Universal Translator'. This will come in very handy, you think. (+1 Universal Translator)."
+        "You find a small plastic box labelled with alien script. You open the box, and see that it contains a metal disc. You take the disc out of the box, and while holding it, the text seems suddenly clear and understandable to you. Looking at the box, you see that it is labelled 'Universal Translator'. This will come in very handy, you think.",
+      keys: { universalTranslator: 1 }
     }
   },
   doors: {

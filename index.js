@@ -1,7 +1,6 @@
-const { escapePod, hanger1, shuttle } = require("./db/seed");
-const { keys, boxText } = require("./db/data");
+const { escapePod } = require("./db/seed");
+const { boxText } = require("./db/data");
 const status = {
-  location: escapePod,
   keys: {}
 };
 
