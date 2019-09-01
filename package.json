@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/lpweston/game#readme",
   "dependencies": {
-    "inquirer": "^7.0.0"
+    "inquirer": "^7.0.0",
+    "sinon-chai": "^3.3.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

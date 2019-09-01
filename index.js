@@ -1,15 +1,15 @@
 const { escapePod, hanger1, shuttle } = require("./db/seed");
-const { keys, boxText } = require("./data");
+const { keys, boxText } = require("./db/data");
 const status = {
   location: escapePod,
-  keys
+  keys: {}
 };
 
 function start() {
   console.log(boxText.prologue);
-  escapePod.enterLocation();
+  escapePod.enterRoom();
 }
 
 start();
 
-module.exports(status);
+module.exports = status;

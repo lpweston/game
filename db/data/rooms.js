@@ -39,6 +39,7 @@ exports.escapePodTemplate = {
   },
   doors: {
     "Open Hatch": {
+      location: "hanger1",
       status: "closed",
       key: "cuttingTorch",
       closed:
@@ -72,6 +73,7 @@ exports.hanger1Template = {
   },
   doors: {
     "Central Corridor Door": {
+      location: "centralCorridoor",
       status: "closed",
       key: "repressurisedCC",
       closed:
@@ -87,6 +89,7 @@ exports.hanger1Template = {
       opened: "You move into Cargo Bay 1"
     },
     "Shuttle Door": {
+      location: "shuttle",
       status: "closed",
       key: "idCard1",
       closed:
@@ -121,6 +124,7 @@ exports.shuttleTemplate = {
   },
   doors: {
     "Door 1": {
+      location: "hanger1",
       status: "open",
       opened: "You climb out of the shuttle"
     }
