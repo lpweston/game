@@ -28,33 +28,35 @@ class Room {
       } else if (this.options.hasOwnProperty(choice)) {
         console.log(this.options[choice].description);
         if (this.options[choice].keys) {
-          const status = require("../../index");
+          const status = require("./index");
           for (const key in this.options[choice].keys) {
-            if (status.keys.hasOwnProperty(key)) {
-              status.keys[key] += 1;
+            if (status.items.hasOwnProperty(key)) {
+              status.items[key] += 1;
             } else {
-              status.keys[key] = 1;
+              status.items[key] = 1;
             }
             console.log(`Obtained ${key}`);
           }
         }
         this.interactRoom();
       } else {
-        const status = require("../../index");
-        console.log(status);
+        const status = require("./index");
+        status.logStatus();
         this.interactRoom();
       }
     });
   }
 
   openDoor(choice) {
-    const status = require("../../index");
-    const Rooms = require("../seed");
+    const status = require("./index");
+    const Rooms = require("./seed");
     let nextRoom = Rooms[this.doors[choice].location];
     if (
       this.doors[choice].status === "closed" &&
-      status.keys.hasOwnProperty(this.doors[choice].key)
+      status.items.hasOwnProperty(this.doors[choice].key)
     ) {
+      status.items[this.doors[choice].key] -= 1;
+      console.log(`Removed ${this.doors[choice].key}`);
       console.log(this.doors[choice].open);
       this.doors[choice].status = "opened";
       nextRoom.enterRoom();
