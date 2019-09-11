@@ -21,25 +21,14 @@ class Room {
 
   interactRoom() {
     inquirer.prompt(this.roomChoices).then(({ choice }) => {
-      //is choice a door?
       if (this.doors.hasOwnProperty(choice)) {
+        // choice is a door?
         this.openDoor(choice);
-        //is choice an option?
       } else if (this.options.hasOwnProperty(choice)) {
-        console.log(this.options[choice].description);
-        if (this.options[choice].keys) {
-          const status = require("./index");
-          for (const key in this.options[choice].keys) {
-            if (status.items.hasOwnProperty(key)) {
-              status.items[key] += 1;
-            } else {
-              status.items[key] = 1;
-            }
-            console.log(`Obtained ${key}`);
-          }
-        }
-        this.interactRoom();
+        // choice is an action?
+        this.performAction(choice);
       } else {
+        // must be status
         const status = require("./index");
         status.logStatus();
         this.interactRoom();
@@ -50,23 +39,38 @@ class Room {
   openDoor(choice) {
     const status = require("./index");
     const Rooms = require("./seed");
-    let nextRoom = Rooms[this.doors[choice].location];
-    if (
-      this.doors[choice].status === "closed" &&
-      status.items.hasOwnProperty(this.doors[choice].key)
-    ) {
-      status.items[this.doors[choice].key] -= 1;
-      console.log(`Removed ${this.doors[choice].key}`);
-      console.log(this.doors[choice].open);
-      this.doors[choice].status = "opened";
+    choice = this.doors[choice];
+    let nextRoom = Rooms[choice.location];
+    if (choice.status === "closed" && status.items.hasOwnProperty(choice.key)) {
+      status.items[choice.key] -= 1;
+      console.log(`Removed ${choice.key}`);
+      console.log(choice.open);
+      choice.status = "opened";
       nextRoom.enterRoom();
-    } else if (this.doors[choice].status === "opened") {
-      console.log(this.doors[choice].opened);
+    } else if (choice.status === "opened") {
+      console.log(choice.opened);
       nextRoom.enterRoom();
     } else {
-      console.log(this.doors[choice].closed);
+      console.log(choice.closed);
       this.interactRoom();
     }
+  }
+
+  performAction(choice) {
+    choice = this.options[choice];
+    console.log(choice.description);
+    if (choice.keys) {
+      const status = require("./index");
+      for (const key in choice.keys) {
+        if (status.items.hasOwnProperty(key)) {
+          status.items[key] += 1;
+        } else {
+          status.items[key] = 1;
+        }
+        console.log(`Obtained ${key}`);
+      }
+    }
+    this.interactRoom();
   }
 }
 

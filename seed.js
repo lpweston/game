@@ -1,5 +1,5 @@
 const { rooms } = require("./data");
-const { Room } = require("./classes/Room");
+const { Room } = require("./Room");
 
 function createRoom(room) {
   return new Room(

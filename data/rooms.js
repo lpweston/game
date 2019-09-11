@@ -182,7 +182,7 @@ exports.cargoBay1Template = {
       description: "The alien body lies slumped and unmoving."
     },
     "Seal Breach": {
-      requires: breachSealKit,
+      requires: "breachSealKit",
       description:
         "You clamp the thin metal disk of the seal kit to the breach, and hit the activation button. Sparks fly as the patch welds itself to the surrounding wall, and the sound of escaping air abruptly fades. You hear a faint clunk, as the locking mechanism on the doors retract, in response to the rising air pressure.",
       keys: { idCard1: "+1" }
