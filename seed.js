@@ -10,6 +10,6 @@ function createRoom(room) {
   );
 }
 
-exports.escapePod = createRoom("escapePodTemplate");
-exports.hanger1 = createRoom("hanger1Template");
-exports.shuttle = createRoom("shuttleTemplate");
+for (const room in rooms) {
+  exports[room] = createRoom(room);
+}

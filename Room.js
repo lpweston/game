@@ -47,21 +47,39 @@ class Room {
       console.log(choice.open);
       choice.status = "opened";
       nextRoom.enterRoom();
+    } else if (choice.status === "open") {
+      console.log(choice.open);
+      nextRoom.enterRoom();
     } else if (choice.status === "opened") {
       console.log(choice.opened);
       nextRoom.enterRoom();
-    } else {
+    } else if (
+      choice.status === "closed" &&
+      status.items.hasOwnProperty("universalTranslator")
+    ) {
+      console.log(choice.translated);
+      nextRoom.enterRoom();
+    } else if (choice.status === "closed") {
       console.log(choice.closed);
       this.interactRoom();
+    } else {
+      console.log("door status issue...");
     }
   }
 
   performAction(choice) {
+    const status = require("./index");
     choice = this.options[choice];
-    console.log(choice.description);
-    if (choice.keys) {
-      const status = require("./index");
-      for (const key in choice.keys) {
+    if (
+      status.items.hasOwnProperty("universalTranslator") &&
+      choice.translated
+    ) {
+      console.log(choice.translated);
+    } else {
+      console.log(choice.description);
+    }
+    if (choice.items) {
+      for (const key in choice.items) {
         if (status.items.hasOwnProperty(key)) {
           status.items[key] += 1;
         } else {
