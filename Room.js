@@ -58,7 +58,7 @@ class Room {
       status.items.hasOwnProperty("universalTranslator")
     ) {
       console.log(choice.translated);
-      nextRoom.enterRoom();
+      this.interactRoom();
     } else if (choice.status === "closed") {
       console.log(choice.closed);
       this.interactRoom();
@@ -79,14 +79,15 @@ class Room {
       console.log(choice.description);
     }
     if (choice.items) {
-      for (const key in choice.items) {
-        if (status.items.hasOwnProperty(key)) {
-          status.items[key] += 1;
-        } else {
-          status.items[key] = 1;
+      if (!choice.requires || status.items.hasOwnProperty(choice.requires))
+        for (const key in choice.items) {
+          if (status.items.hasOwnProperty(key)) {
+            status.items[key] += 1;
+          } else {
+            status.items[key] = 1;
+          }
+          console.log(`Obtained ${key}`);
         }
-        console.log(`Obtained ${key}`);
-      }
     }
     this.interactRoom();
   }

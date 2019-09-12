@@ -151,7 +151,8 @@ exports.cargoBay1 = {
         "The container is labelled in the alien language. Inside, racks of boxes and large, sealed crates are secured to the walls. Each container is labelled, but you cannot read the language. It would take hours to search this container for useful supplies.",
       translated:
         "The container is labelled 'Emergency Repairs'. Inside, racks of boxes and large, sealed crates are secured to the walls. Each container is labelled according to its contents and the emergency conditions it should be used in. You quickly find a 'Breach Seal Kit'",
-      item: { breachSealKit: 1 }
+      requires: "universalTranslator",
+      items: { breachSealKit: 1 }
     },
     "Examine Container 4": {
       description:
