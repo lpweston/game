@@ -1,29 +1,31 @@
 {
   "name": "game",
-  "version": "1.0.0",
-  "description": "choose your own adventure game",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha spec/*spec.js",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lpweston/game.git"
-  },
-  "author": "L&J Weston",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lpweston/game/issues"
-  },
-  "homepage": "https://github.com/lpweston/game#readme",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "inquirer": "^7.0.0",
-    "sinon-chai": "^3.3.0"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1"
   },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.2.0",
-    "sinon": "^7.4.1"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
