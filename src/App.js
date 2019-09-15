@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     health: "Ok",
     items: {},
-    room: "prologue"
+    room: "prologue",
+    message: ""
   };
   render() {
     console.log(this.state);
@@ -24,9 +25,8 @@ class App extends Component {
       </div>
     );
   }
-  changeRoom = e => {
-    const newRoom = e.target.value;
-    this.setState({ room: newRoom });
+  changeRoom = (room, message) => {
+    this.setState({ room, message });
   };
 }
 
