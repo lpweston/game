@@ -2,18 +2,18 @@ import React, { Component } from "react";
 
 class Stats extends Component {
   render() {
-    const { status } = this.props;
+    const { health, room, inventory } = this.props;
     return (
       <ul id="Stats" className="Area">
-        <li>Health: {status.health}</li>
-        <li>Location: {status.room}</li>
+        <li>Health: {health}</li>
+        <li>Location: {room}</li>
         <li>
-          Items:
+          Inventory:
           <ul>
-            {Object.keys(status.items).map((item, i) => {
+            {Object.keys(inventory).map((item, i) => {
               return (
                 <li key={`item${i}`}>
-                  {item}: &nbsp;{status.items[item]}
+                  {item}: &nbsp;{inventory[item]}
                 </li>
               );
             })}

@@ -9,23 +9,42 @@ import "./App.css";
 class App extends Component {
   state = {
     health: "Ok",
-    items: {},
-    room: "prologue",
+    inventory: {},
+    room: "escapePod",
     message: ""
   };
   render() {
     return (
       <div id="App">
         <Header />
-        <Text status={this.state} changeRoom={this.changeRoom} />
+        <Text {...this.state} changeStatus={this.changeStatus} />
         <Map />
-        <Stats status={this.state} />
+        <Stats {...this.state} />
         <Footer />
       </div>
     );
   }
-  changeRoom = (room, message) => {
-    this.setState({ room, message });
+  changeStatus = ({ room, message, items }) => {
+    if (items) this.inventorySorter(items);
+    this.setState(prevState => {
+      room = room || prevState.room;
+      message = message || prevState.message;
+      return { room, message };
+    });
+  };
+
+  inventorySorter = items => {
+    this.setState(prevState => {
+      const { inventory } = prevState;
+      for (const item in items) {
+        if (inventory.hasOwnProperty(item)) {
+          inventory[item] += items[item];
+        } else {
+          inventory[item] = items[item];
+        }
+      }
+      return { inventory };
+    });
   };
 }
 

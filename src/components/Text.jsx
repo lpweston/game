@@ -4,16 +4,17 @@ import rooms from "../data/rooms";
 class Text extends Component {
   state = {
     rooms,
-    message: this.props.status.message,
-    room: rooms[this.props.status.room]
+    message: this.props.message,
+    room: rooms[this.props.room]
   };
   render() {
     const { message, room } = this.state;
     return (
       <div id="control" className="Area">
         <div id="Text">
-          {message.length > 0 && <p>{message}</p>}
           <p> {room.description}</p> <hr />
+          {message.length > 0 && <p>{message}</p>}
+          <hr />
           <div id="choices"></div>
           {Object.keys(room.doors).map((door, i) => {
             return (
@@ -28,7 +29,11 @@ class Text extends Component {
           })}
           {Object.keys(room.options).map((option, i) => {
             return (
-              <button onClick={this.interactOption} key={`options${i}`}>
+              <button
+                onClick={this.interactOption}
+                key={`options${i}`}
+                value={option}
+              >
                 {option}
               </button>
             );
@@ -39,23 +44,40 @@ class Text extends Component {
   }
 
   componentDidUpdate = prevProps => {
-    if (prevProps.status.room !== this.props.status.room) {
+    if (
+      prevProps.room !== this.props.room ||
+      prevProps.message !== this.props.message
+    ) {
       this.setState({
-        message: this.props.status.message,
-        room: rooms[this.props.status.room]
+        message: this.props.message,
+        room: rooms[this.props.room]
       });
     }
   };
 
   interactDoor = e => {
     const door = this.state.room.doors[e.target.value];
-    const { changeRoom } = this.props;
-    const newLocation = door.location;
-    const newMessage = door.open || "";
-    changeRoom(newLocation, newMessage);
+    const { changeStatus, inventory } = this.props;
+    let room, message;
+    if (door.status === "closed" && inventory.hasOwnProperty(door.key)) {
+      console.log("got the key");
+    } else if (door.status === "closed") {
+      message = door.closed;
+    } else if (door.status === "opened") {
+      room = door.location;
+      message = door.opened;
+    }
+    changeStatus({ room, message });
   };
   interactOption = e => {
-    console.log("choice");
+    const { changeStatus } = this.props;
+    const option = this.state.room.options[e.target.value];
+    const message = option.description;
+    let items;
+    if (option.items) {
+      items = option.items;
+    }
+    changeStatus({ message, items });
   };
 }
 
