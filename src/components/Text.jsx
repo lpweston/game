@@ -2,27 +2,34 @@ import React, { Component } from "react";
 import rooms from "../data/rooms";
 
 class Text extends Component {
-  state = { rooms };
+  state = {
+    rooms,
+    message: this.props.status.message,
+    room: rooms[this.props.status.room]
+  };
   render() {
-    const { room, message } = this.props.status;
-    const { changeRoom } = this.props;
+    const { message, room } = this.state;
     return (
       <div id="control" className="Area">
         <div id="Text">
           {message.length > 0 && <p>{message}</p>}
-          <p> {rooms[room].description}</p> <hr />
+          <p> {room.description}</p> <hr />
           <div id="choices"></div>
-          {Object.keys(rooms[room].doors).map((door, i) => {
-            const newLocation = rooms[room].doors[door].location;
-            const newMessage = rooms[room].doors[door].open || "";
+          {Object.keys(room.doors).map((door, i) => {
             return (
               <button
-                onClick={() => {
-                  changeRoom(newLocation, newMessage);
-                }}
+                onClick={this.interactDoor}
                 key={`doors${i}`}
+                value={door}
               >
                 {door}
+              </button>
+            );
+          })}
+          {Object.keys(room.options).map((option, i) => {
+            return (
+              <button onClick={this.interactOption} key={`options${i}`}>
+                {option}
               </button>
             );
           })}
@@ -30,6 +37,26 @@ class Text extends Component {
       </div>
     );
   }
+
+  componentDidUpdate = prevProps => {
+    if (prevProps.status.room !== this.props.status.room) {
+      this.setState({
+        message: this.props.status.message,
+        room: rooms[this.props.status.room]
+      });
+    }
+  };
+
+  interactDoor = e => {
+    const door = this.state.room.doors[e.target.value];
+    const { changeRoom } = this.props;
+    const newLocation = door.location;
+    const newMessage = door.open || "";
+    changeRoom(newLocation, newMessage);
+  };
+  interactOption = e => {
+    console.log("choice");
+  };
 }
 
 export default Text;

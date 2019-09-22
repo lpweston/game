@@ -14,7 +14,6 @@ class App extends Component {
     message: ""
   };
   render() {
-    console.log(this.state);
     return (
       <div id="App">
         <Header />
