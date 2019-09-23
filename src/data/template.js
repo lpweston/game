@@ -4,7 +4,9 @@ exports.Template = {
   options: {
     "Option 1": {
       description: "text",
-      items: { key1: 1 }
+      translated: "text2",
+      items: { key1: 1 },
+      once: false
     }
   },
   doors: {

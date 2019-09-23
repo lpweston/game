@@ -58,24 +58,44 @@ class Text extends Component {
   interactDoor = e => {
     const door = this.state.room.doors[e.target.value];
     const { changeStatus, inventory } = this.props;
-    let room, message;
+    let room, message, items;
     if (door.status === "closed" && inventory.hasOwnProperty(door.key)) {
-      console.log("got the key");
-    } else if (door.status === "closed") {
-      message = door.closed;
-    } else if (door.status === "opened") {
+      items = { [door.key]: -1 };
+      door.status = "opened";
+      message = door.open;
       room = door.location;
+    } else if (door.status === "open") {
+      door.status = "opened";
+      message = door.open;
+      room = door.location;
+    } else if (door.status === "closed") {
+      if (door.translated && inventory.hasOwnProperty("universalTranslator")) {
+        message = door.translated;
+      } else {
+        message = door.closed;
+      }
+    } else if (door.status === "opened") {
       message = door.opened;
+      room = door.location;
     }
-    changeStatus({ room, message });
+    changeStatus({ room, message, items });
   };
   interactOption = e => {
-    const { changeStatus } = this.props;
+    const { changeStatus, inventory } = this.props;
     const option = this.state.room.options[e.target.value];
-    const message = option.description;
-    let items;
+    let items, message;
+    if (option.translated && inventory.hasOwnProperty("universalTranslator")) {
+      message = option.translated;
+    } else {
+      message = option.description;
+    }
     if (option.items) {
-      items = option.items;
+      if (!option.requires || inventory.hasOwnProperty(option.requires)) {
+        items = option.items;
+      }
+    }
+    if (option.once) {
+      delete this.state.room.options[e.target.value];
     }
     changeStatus({ message, items });
   };

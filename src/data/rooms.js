@@ -87,7 +87,8 @@ exports.escapePod = {
     "Search Supplies": {
       description:
         "The survival supplies are limited, but you do find a Medical Kit and a Cutting Torch.",
-      items: { Medkit: 1, "Cutting Torch": 1 }
+      items: { Medkit: 1, "Cutting Torch": 1 },
+      once: true
     },
     "Look Out of Porthole": {
       description:
@@ -174,7 +175,8 @@ exports.shuttle = {
     "Search Lockers": {
       description:
         "You find a small plastic box labelled with alien script. You open the box, and see that it contains a metal disc. You take the disc out of the box. As soon as you touch it, your vision swims and the text on the box blurs, then sharpens again into perfect clarity. To your surprise, you can read the text perfectly. The box is labelled 'Universal Translator'. This will come in very handy, you think.",
-      items: { universalTranslator: 1 }
+      items: { universalTranslator: 1 },
+      once: true
     }
   },
   doors: {
@@ -209,7 +211,8 @@ exports.cargoBay1 = {
       translated:
         "The container is labelled 'Emergency Repairs'. Inside, racks of boxes and large, sealed crates are secured to the walls. Each container is labelled according to its contents and the emergency conditions it should be used in. You quickly find a 'Breach Seal Kit'",
       requires: "universalTranslator",
-      items: { breachSealKit: 1 }
+      items: { breachSealKit: 1 },
+      once: true
     },
     "Examine Container 4": {
       description:
@@ -226,7 +229,8 @@ exports.cargoBay1 = {
     "Examine Corpse 1": {
       description:
         "A body lies slumped against the wall. You are not exactly sure what this creature looked like in life, but one of its many appendages appears to end in a bloody mess. As you draw near, you begin to hear a whistling sound, which grows to a low roar the closer you get. Looking around, you soon identify the source: a small breach in the hull, near the body. There is a matching hole in the opposite wall, leading to the interior of the ship. You suspect that whatever projectile did this damage, also killed the alien. Tentatively searching the corpse, you find some kind of key card held in their hand.",
-      items: { idCard1: 1 }
+      items: { idCard1: 1 },
+      once: true
     },
     "Examine Corpse 2": {
       description: "The alien body lies slumped and unmoving."
@@ -234,7 +238,9 @@ exports.cargoBay1 = {
     "Seal Breach": {
       requires: "breachSealKit",
       description:
-        "You clamp the thin metal disk of the seal kit to the breach, and hit the activation button. Sparks fly as the patch welds itself to the surrounding wall, and the sound of escaping air abruptly fades. You hear a faint clunk, as the locking mechanism on the doors retract, in response to the rising air pressure."
+        "You clamp the thin metal disk of the seal kit to the breach, and hit the activation button. Sparks fly as the patch welds itself to the surrounding wall, and the sound of escaping air abruptly fades. You hear a faint clunk, as the locking mechanism on the doors retract, in response to the rising air pressure.",
+      items: { breach: -1 },
+      once: true
     }
   },
   doors: {

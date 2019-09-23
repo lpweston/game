@@ -39,6 +39,9 @@ class App extends Component {
       for (const item in items) {
         if (inventory.hasOwnProperty(item)) {
           inventory[item] += items[item];
+          if (inventory[item] === 0) {
+            delete inventory[item];
+          }
         } else {
           inventory[item] = items[item];
         }
