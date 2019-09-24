@@ -59,7 +59,12 @@ class Text extends Component {
     const door = this.state.room.doors[e.target.value];
     const { changeStatus, inventory } = this.props;
     let room, message, items;
-    if (door.status === "closed" && inventory.hasOwnProperty(door.key)) {
+    const haveKey =
+      door.status === "closed" && inventory.hasOwnProperty(door.key);
+    const trans =
+      door.translated && inventory.hasOwnProperty("universalTranslator");
+    if (haveKey) {
+      console.log("inhere");
       items = { [door.key]: -1 };
       door.status = "opened";
       message = door.open;
@@ -68,34 +73,38 @@ class Text extends Component {
       door.status = "opened";
       message = door.open;
       room = door.location;
+    } else if (door.status === "opened") {
+      message = door.opened;
+      room = door.location;
     } else if (door.status === "closed") {
-      if (door.translated && inventory.hasOwnProperty("universalTranslator")) {
+      if (trans) {
         message = door.translated;
       } else {
         message = door.closed;
       }
-    } else if (door.status === "opened") {
-      message = door.opened;
-      room = door.location;
     }
     changeStatus({ room, message, items });
   };
   interactOption = e => {
     const { changeStatus, inventory } = this.props;
     const option = this.state.room.options[e.target.value];
-    let items, message;
-    if (option.translated && inventory.hasOwnProperty("universalTranslator")) {
-      message = option.translated;
-    } else {
-      message = option.description;
-    }
+    let items, message, trans, req, del;
+    trans =
+      option.translated && inventory.hasOwnProperty("universalTranslator");
+    req = option.requires && inventory.hasOwnProperty(option.requires);
+    del = option.once;
+    if (trans) message = option.translated;
+    else if (req) message = option.success;
+    else message = option.description;
     if (option.items) {
-      if (!option.requires || inventory.hasOwnProperty(option.requires)) {
-        items = option.items;
-      }
+      if (!option.requires || req) items = option.items;
     }
     if (option.once) {
-      delete this.state.room.options[e.target.value];
+      if (option.requires && !req) del = false;
+      if (option.translated && !trans) del = false;
+      if (del) {
+        delete this.state.room.options[e.target.value];
+      }
     }
     changeStatus({ message, items });
   };
