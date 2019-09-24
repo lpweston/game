@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     health: "Ok",
     inventory: {},
-    room: "escapePod",
+    room: "prologue",
     message: ""
   };
   render() {

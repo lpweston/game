@@ -10,7 +10,8 @@ exports.escapePod = {
     "Search Supplies": {
       description:
         "The survival supplies are limited, but you do find a Medical Kit and a Cutting Torch.",
-      items: { Medkit: 1, "Cutting Torch": 1 }
+      items: { Medkit: 1, "Cutting Torch": 1 },
+      once: true
     },
     "Look Out of Porthole": {
       description:
@@ -97,7 +98,8 @@ exports.shuttle = {
     "Search Lockers": {
       description:
         "You find a small plastic box labelled with alien script. You open the box, and see that it contains a metal disc. You take the disc out of the box. As soon as you touch it, your vision swims and the text on the box blurs, then sharpens again into perfect clarity. To your surprise, you can read the text perfectly. The box is labelled 'Universal Translator'. This will come in very handy, you think.",
-      items: { universalTranslator: 1 }
+      items: { universalTranslator: 1 },
+      once: true
     }
   },
   doors: {

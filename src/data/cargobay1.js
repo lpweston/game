@@ -20,8 +20,8 @@ exports.cargoBay1 = {
         "The container is labelled in the alien language. Inside, racks of boxes and large, sealed crates are secured to the walls. Each container is labelled, but you cannot read the language. It would take hours to search this container for useful supplies.",
       translated:
         "The container is labelled 'Emergency Repairs'. Inside, racks of boxes and large, sealed crates are secured to the walls. Each container is labelled according to its contents and the emergency conditions it should be used in. You quickly find a 'Breach Seal Kit'",
-      requires: "universalTranslator",
-      items: { breachSealKit: 1 }
+      items: { breachSealKit: 1 },
+      once: true
     },
     "Examine Container 4": {
       description:
@@ -38,15 +38,20 @@ exports.cargoBay1 = {
     "Examine Corpse 1": {
       description:
         "A body lies slumped against the wall. You are not exactly sure what this creature looked like in life, but one of its many appendages appears to end in a bloody mess. As you draw near, you begin to hear a whistling sound, which grows to a low roar the closer you get. Looking around, you soon identify the source: a small breach in the hull, near the body. There is a matching hole in the opposite wall, leading to the interior of the ship. You suspect that whatever projectile did this damage, also killed the alien. Tentatively searching the corpse, you find some kind of key card held in their hand.",
-      items: { idCard1: 1 }
+      items: { idCard1: 1 },
+      once: true
     },
     "Examine Corpse 2": {
       description: "The alien body lies slumped and unmoving."
     },
     "Seal Breach": {
-      requires: "breachSealKit",
       description:
-        "You clamp the thin metal disk of the seal kit to the breach, and hit the activation button. Sparks fly as the patch welds itself to the surrounding wall, and the sound of escaping air abruptly fades. You hear a faint clunk, as the locking mechanism on the doors retract, in response to the rising air pressure."
+        "(Temp, James please write this proper) There's a 1 inch breach in the hull, atmosphere is slowly leaking out.",
+      requires: "breachSealKit",
+      success:
+        "You clamp the thin metal disk of the seal kit to the breach, and hit the activation button. Sparks fly as the patch welds itself to the surrounding wall, and the sound of escaping air abruptly fades. You hear a faint clunk, as the locking mechanism on the doors retract, in response to the rising air pressure.",
+      items: { breach: -1 },
+      once: true
     }
   },
   doors: {
@@ -56,9 +61,9 @@ exports.cargoBay1 = {
       opened: "You move into Hanger 1"
     },
     "Central Corridor Door": {
-      location: "centralCorridor",
+      location: "end",
       status: "closed",
-      key: "repressurisedCC",
+      key: "breach",
       closed:
         "The hatch is sealed tight. A screen on the door displays a message, in unreadable alien text.",
       translated:
@@ -66,6 +71,19 @@ exports.cargoBay1 = {
       open:
         "The hatch no longer displays the warning message, and swings open easily. You move into the corridor beyond.",
       opened: "You move into the Central Corridor"
+    }
+  }
+};
+
+exports.end = {
+  name: "end",
+  description: "You have reached the end of the Demo. Thank you for playing.",
+  options: {},
+  doors: {
+    "Start Again?": {
+      location: "prologue",
+      status: "opened",
+      opened: ""
     }
   }
 };
