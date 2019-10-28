@@ -1,6 +1,7 @@
 exports.Template = {
   name: "text",
   description: "Text",
+  mapped: false,
   options: {
     "Option 1": {
       // need description, defualt text

@@ -5,6 +5,7 @@ class Stats extends Component {
     const { health, room, inventory } = this.props;
     return (
       <ul id="Stats" className="Area">
+        <h2>Status:</h2>
         <li>Health: {health}</li>
         <li>Location: {room}</li>
         <li>

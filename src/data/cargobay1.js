@@ -1,5 +1,6 @@
 exports.cargoBay1 = {
   name: "Cargo Bay 1",
+  mapped: false,
   description:
     "A long, cavernous room. 5 large metal containers line the outher wall, clearly designed for long-term storage. At the far end of the room, away from the doors, lies a corpse.",
   options: {

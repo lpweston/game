@@ -12,8 +12,14 @@ class Text extends Component {
     return (
       <div id="control" className="Area">
         <div id="Text">
+          <h3>{room.name}:</h3>
           <p> {room.description}</p> <hr />
-          {message.length > 0 && <p>{message}</p>}
+          {message.length > 0 && (
+            <div>
+              <h3>Result:</h3>
+              <p>{message}</p>
+            </div>
+          )}
           <hr />
           <div id="choices"></div>
           {Object.keys(room.doors).map((door, i) => {

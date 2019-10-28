@@ -1,5 +1,6 @@
 exports.escapePod = {
-  name: "escapePod",
+  name: "Escape Pod",
+  mapped: true,
   description:
     "Your escape pod contains crash couches and life support for five people, but you are the only occupant. There is a sealed escape hatch at one end of the pod, and a communications console at the other end. Survival equipment is secured to the walls, and a small porthole is built into the roof.",
   options: {
@@ -36,6 +37,7 @@ exports.escapePod = {
 
 exports.hanger1 = {
   name: "Hanger 1",
+  mapped: false,
   description:
     "Your escape pod is held in a hanger bay, which also contains some kind of small shuttlecraft. A set of closed spacedoors take up one long wall. There are two bulkhead doors leading out of the Hanger, each labelled with unfamiliar alien writing. Four lockers sit against the far wall.",
   options: {
@@ -88,6 +90,7 @@ exports.hanger1 = {
 
 exports.shuttle = {
   name: "Shuttle",
+  mapped: false,
   description:
     "The inside of the shuttle is mostly taken up by storage lockers and seating. ",
   options: {

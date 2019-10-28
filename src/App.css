@@ -1,6 +1,8 @@
 body {
-  background-color: rgb(45, 52, 58);
+  background-color: hsl(197, 37%, 8%);
+  /* rgb(45, 52, 58); */
   text-align: center;
+  color: white;
 }
 
 #App {
@@ -13,9 +15,11 @@ body {
 .Area {
   margin: 7px;
   padding: 10px;
-  border: 7.5px double #0b2c42;
+  border: 7.5px double hsl(197, 20%, 70%);
+  /* #0b2c42; */
   border-radius: 10px 10px 10px 10px;
-  background-color: rgb(138, 166, 192);
+  background-color: #355959;
+  /* rgb(138, 166, 192); */
 }
 
 #Header {

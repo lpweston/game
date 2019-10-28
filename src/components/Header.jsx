@@ -4,7 +4,13 @@ class Header extends Component {
   render() {
     return (
       <header id="Header" className="Area">
-        <h1>Inhuman</h1>
+        <h1>
+          <img
+            src={require("../images/title2.png")}
+            alt="Inhuman"
+            height="60em"
+          />
+        </h1>
       </header>
     );
   }
